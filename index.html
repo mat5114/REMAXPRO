@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RE/MAX PRO Porto</title>
+<meta name="description" content="RE/MAX PRO: agência imobiliária na Rua Júlio Dinis, 849, Porto. Comprar, vender, arrendar e investir no Grande Porto e em Viana do Castelo.">
+<link rel="icon" href="assets/balao.svg" type="image/svg+xml">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
+<style>
+/* Concept: "A montra do 849". The site is the agency's shop window at night on Rua Júlio Dinis:
+   neon red/blue type taken from the facade sign, listings hung as backlit lightbox posters on a street-map wall,
+   a live "Aberto / Fechado" door sign, and the team photo as the daylight moment. One family: Manrope. Flat colour, no glow. */
+:root{
+  --night:#0b1024;
+  --night-2:#121a36;
+  --night-3:#1a2448;
+  --paper:#fbfaf6;
+  --day:#f3f1ea;
+  --ink:#121a36;
+  --ink-2:#4d546b;
+  --ink-3:#80869a;
+  --neon-red:#ff3340;
+  --neon-blue:#4f7dff;
+  --red:#e3202c;
+  --blue:#2f55c7;
+  --text:#eef0f7;
+  --text-2:#9ea6c2;
+  --rule:rgba(238,240,247,.12);
+  --rule-day:#dcd8cb;
+  --glow-red:0 0 6px rgba(255,51,64,.9),0 0 18px rgba(255,51,64,.55),0 0 42px rgba(255,51,64,.35);
+  --glow-blue:0 0 6px rgba(79,125,255,.9),0 0 18px rgba(79,125,255,.55),0 0 42px rgba(79,125,255,.35);
+
+  --f:"Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --t-mega:clamp(4rem, 1rem + 12vw, 13rem);
+  --t-hero:clamp(2.6rem, 1.2rem + 5.2vw, 6.4rem);
+  --t-h2:clamp(2.2rem, 1.2rem + 3.8vw, 5rem);
+  --t-h3:clamp(1.2rem, 1.05rem + .5vw, 1.5rem);
+  --t-body:clamp(1rem, .97rem + .14vw, 1.1rem);
+  --t-tag:.74rem;
+  --wrap:1320px;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--night);color:var(--text);font-family:var(--f);font-size:var(--t-body);line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--night)}
+h1,h2,h3,p,figure,blockquote,dl,dd,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+h1,h2,h3{font-weight:700;letter-spacing:-.04em;line-height:.95;text-wrap:balance;}
+p{text-wrap:pretty}
+a{color:inherit}
+img{max-width:100%;display:block}
+.num{font-variant-numeric:tabular-nums}
+.tag{font-size:var(--t-tag);font-weight:600;letter-spacing:.16em;text-transform:uppercase;}
+:focus-visible{outline:2px solid var(--neon-blue);outline-offset:4px;border-radius:4px}
+.day :focus-visible{outline-color:var(--blue)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+@media (min-width:760px){.wrap{padding-left:max(40px, env(safe-area-inset-left, 0px));padding-right:max(40px, env(safe-area-inset-right, 0px))}}
+.band{padding-block:clamp(88px,10vw,160px)}
+.day{background:var(--day);color:var(--ink)}
+
+/* neon type, as on the facade sign */
+.neon-r{color:#ff5560}
+.neon-b{color:#8aa6ff}
+@media (prefers-reduced-motion:no-preference){
+  
+  @keyframes flick{0%{opacity:1}6%{opacity:.35}9%{opacity:1}14%{opacity:.5}17%{opacity:1}100%{opacity:1}}
+}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 24px;border-radius:999px;font:600 .98rem/1 var(--f);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s,box-shadow .25s;}
+.btn svg{width:16px;height:16px;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#c41a25}
+.btn-line{border-color:rgba(238,240,247,.3);color:var(--text)}
+.btn-line:hover{border-color:var(--text)}
+.day .btn-line{border-color:var(--rule-day);color:var(--ink)}
+.day .btn-line:hover{border-color:var(--ink)}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:var(--blue)}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(11,16,36,.78);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);border-bottom:1px solid var(--rule)}
+.nav-in{display:flex;align-items:center;gap:28px;min-height:72px}
+.logo{display:flex;align-items:center;gap:12px;color:var(--text);text-decoration:none;padding-block:8px}
+.logo .wm{height:18px;width:auto;fill:currentColor}
+.logo .bl{height:28px;width:auto}
+.menu{display:flex;gap:26px;margin-left:auto}
+.menu a{font-size:.94rem;font-weight:500;text-decoration:none;color:var(--text-2);padding-block:8px;transition:color .2s,text-shadow .2s}
+.menu a:hover{color:#fff}
+.status-pill{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--rule);white-space:nowrap}
+.status-pill i{width:8px;height:8px;border-radius:50%;background:var(--text-2)}
+.status-pill.open i{background:#8aa6ff}
+.status-pill.closed i{background:#ff5560}
+.burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);background:transparent;color:var(--text);cursor:pointer;place-items:center}
+.burger svg{width:18px;height:18px}
+@media (max-width:940px){
+  .burger{display:grid}.nav .status-pill{display:none}
+  .menu{position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--night);border-bottom:1px solid var(--rule);padding:6px max(16px, env(safe-area-inset-right, 0px)) 18px max(16px, env(safe-area-inset-left, 0px))}
+  .menu a{padding:14px 0;font-size:1.1rem;border-bottom:1px solid var(--rule)}
+  .menu[data-open="false"]{display:none}
+}
+
+/* ---------- hero: the storefront ---------- */
+.hero{position:relative;overflow:hidden;background:var(--night)}
+.hero-photo{position:absolute;inset:0;margin:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:62% 45%}
+.hero-photo::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(11,16,36,.96) 0%,rgba(11,16,36,.82) 34%,rgba(11,16,36,.25) 66%,rgba(11,16,36,.1) 100%),
+  linear-gradient(0deg,var(--night) 0%,rgba(11,16,36,0) 32%)}
+.hero-in{position:relative;padding-block:clamp(72px,10vw,150px) clamp(48px,6vw,88px);min-height:clamp(560px,52vw,780px);display:flex;flex-direction:column;justify-content:flex-end}
+.hero .tag{color:var(--text-2);display:flex;align-items:center;gap:12px}
+.hero .tag svg{width:16px;height:18px}
+.hero h1{font-size:var(--t-hero);margin-top:24px;max-width:11ch;font-weight:400;letter-spacing:-.035em}
+.hero h1 .n849{display:block;font-size:var(--t-mega);line-height:.82;letter-spacing:-.07em;font-weight:200;margin-top:.05em}
+.hero-lede{color:var(--text-2);max-width:42ch;margin-top:28px;font-size:clamp(1.05rem,1rem + .3vw,1.22rem)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+@media (max-width:760px){
+  .hero-photo img{object-position:70% 40%}
+  .hero-photo::after{background:linear-gradient(0deg,var(--night) 8%,rgba(11,16,36,.82) 55%,rgba(11,16,36,.45) 100%)}
+  .hero-in{min-height:0;padding-top:200px}
+}
+
+/* neon figures strip */
+.tubes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--rule)}
+.tube{padding:28px 22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.tube + .tube{border-left:1px solid var(--rule)}
+.tube dt{font-size:clamp(2.4rem,1.6rem + 3vw,4.6rem);font-weight:300;letter-spacing:-.05em;line-height:.9;}
+.tube dd{color:var(--text-2);font-size:.9rem;max-width:22ch}
+@media (max-width:760px){
+  .tubes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tube:nth-child(3){border-left:0}
+  .tube:nth-child(n+3){border-top:1px solid var(--rule)}
+}
+
+/* ---------- section heads ---------- */
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:28px 40px;margin-bottom:clamp(48px,6vw,80px)}
+.head .tag{color:var(--text-2);display:flex;align-items:center;gap:12px}
+.day .head .tag{color:var(--ink-3)}
+.head .tag::before{content:"";width:28px;height:2px;background:linear-gradient(90deg,var(--red) 50%,var(--blue) 50%)}
+.head h2{font-size:var(--t-h2);margin-top:0;max-width:16ch}
+.head p{color:var(--text-2);max-width:40ch}
+.day .head p{color:var(--ink-2)}
+
+/* ---------- the window: lightbox listings ---------- */
+.window{position:relative;background:var(--night-2);overflow:hidden}
+.window::before{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;background:
+  repeating-linear-gradient(28deg,transparent 0 46px,rgba(238,240,247,.05) 46px 47px),
+  repeating-linear-gradient(-62deg,transparent 0 70px,rgba(238,240,247,.045) 70px 71px),
+  repeating-linear-gradient(110deg,transparent 0 130px,rgba(238,240,247,.06) 130px 132px)}
+.window .wrap{position:relative}
+.tabs{display:inline-flex;gap:4px;padding:4px;border-radius:999px;border:1px solid var(--rule);background:rgba(11,16,36,.6);max-width:100%;overflow-x:auto;scrollbar-width:none}
+.tab{border:0;background:transparent;color:var(--text-2);font:600 .9rem/1 var(--f);min-height:42px;padding:0 18px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:background-color .25s,color .25s}
+.tab:hover{color:#fff}
+.tab[aria-selected="true"]{background:var(--text);color:var(--night)}
+.tab .n{opacity:.55;margin-left:6px;font-weight:500}
+
+.boxes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,268px),1fr));gap:72px 28px;padding-top:36px}
+.box{position:relative;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);text-decoration:none;border-radius:6px;box-shadow:0 30px 50px -28px rgba(0,0,0,.7);transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.box::before,.box::after{content:"";position:absolute;bottom:100%;width:1px;height:40px;background:linear-gradient(rgba(238,240,247,0),rgba(238,240,247,.45))}
+.box::before{left:22%}.box::after{right:22%}
+.box:hover{transform:translateY(-6px);box-shadow:0 40px 60px -28px rgba(0,0,0,.8)}
+.box-in{position:relative;overflow:hidden;border-radius:6px;display:flex;flex-direction:column;flex:1}
+.stripe{display:flex;height:6px}
+.stripe i{flex:1}.stripe i:nth-child(1){background:var(--red)}.stripe i:nth-child(2){background:#7a1219}.stripe i:nth-child(3){background:var(--ink)}.stripe i:nth-child(4){background:var(--blue)}
+.box-top{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:14px 18px 0}
+.box-top .tag{color:var(--ink-3);font-size:.66rem}
+.box-top .tag.k{color:var(--blue)}
+.box.rent .box-top .tag.k{color:var(--red)}
+.plan{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:end;gap:14px;padding:14px 18px 6px}
+.plan b{font-size:4.4rem;font-weight:300;letter-spacing:-.06em;line-height:.8;}
+.plan svg{width:100%;height:96px;overflow:visible}
+.plan .walls{fill:none;stroke:var(--ink);stroke-width:1;opacity:.45;vector-effect:non-scaling-stroke}
+.plan .outer{fill:none;stroke:var(--ink);stroke-width:2;vector-effect:non-scaling-stroke}
+.plan .liv{fill:var(--blue);opacity:.16}
+.box.rent .plan .liv{fill:var(--red)}
+.plan .door{fill:none;stroke:var(--ink);stroke-width:1;opacity:.4;vector-effect:non-scaling-stroke}
+.box-b{display:flex;flex-direction:column;gap:6px;padding:12px 18px 18px;flex:1}
+.price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font-size:1.6rem;font-weight:700;letter-spacing:-.03em;}
+.price small{font-size:.85rem;font-weight:500;color:var(--ink-3);letter-spacing:0}
+.price s{font-size:.95rem;font-weight:400;color:var(--ink-3)}
+.where{color:var(--ink-2);font-size:.9rem;line-height:1.4}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:auto;padding-top:12px;border-top:1px dashed var(--rule-day);color:var(--ink-3);font-size:.8rem;font-weight:500}
+.ribbon{position:absolute;top:22px;right:-44px;transform:rotate(38deg);background:var(--red);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.2em;padding:6px 52px;text-transform:uppercase;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.ribbon.let{background:var(--blue)}
+@media (max-width:560px){.boxes{padding-inline:8px}}
+.win-foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:72px}
+.win-foot p{margin-left:auto;color:var(--text-2);font-size:.88rem}
+
+/* ---------- services ---------- */
+.svc{border-top:1px solid var(--rule)}
+.svc li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid var(--rule)}
+.svc h3{font-size:clamp(1.8rem,1.1rem + 2.6vw,3.4rem);font-weight:300;letter-spacing:-.05em;transition:color .3s,text-shadow .3s}
+.svc li:nth-child(odd):hover h3{color:#ff5560}
+.svc li:nth-child(even):hover h3{color:#8aa6ff}
+.svc p{color:var(--text-2);max-width:44ch}
+@media (max-width:760px){.svc li{grid-template-columns:minmax(0,1fr);gap:8px}}
+
+/* ---------- team (daylight) ---------- */
+.team-photo{position:relative;margin:0;border-radius:20px;overflow:hidden;aspect-ratio:1360/696;max-width:100%;background:#cfd3dc}
+.team-photo img{width:100%;height:100%;object-fit:cover}
+.team-photo figcaption{position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:rgba(251,250,246,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--ink);font-size:.86rem;font-weight:600}
+.team-photo figcaption svg{width:14px;height:16px}
+@media (max-width:640px){.team-photo{aspect-ratio:4/3.2}.team-photo img{object-position:45% 50%}}
+.team-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(40px,6vw,96px);margin-top:clamp(56px,7vw,96px);align-items:start}
+.team-grid h3{font-size:clamp(1.8rem,1.2rem + 2vw,3rem);font-weight:700;letter-spacing:-.035em;line-height:1}
+.team-grid h3 span{color:var(--red)}
+.team-grid .lede{color:var(--ink-2);margin-top:20px;max-width:40ch}
+.team-grid .btn{margin-top:32px}
+.pillars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1.5px solid var(--ink)}
+.pillars li{padding:22px 24px 22px 0;border-bottom:1px solid var(--rule-day)}
+.pillars li:nth-child(even){padding-left:24px;padding-right:0;border-left:1px solid var(--rule-day)}
+.pillars b{display:block;font-weight:700;font-size:1.08rem;}
+.pillars span{display:block;color:var(--ink-2);font-size:.92rem;margin-top:4px}
+@media (max-width:900px){.team-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.pillars{grid-template-columns:minmax(0,1fr)}.pillars li:nth-child(even){padding-left:0;border-left:0}}
+
+/* ---------- awards plaque ---------- */
+.awards{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.plaque{position:relative;border-radius:22px;padding:clamp(28px,4vw,48px);background:radial-gradient(120% 90% at 0% 0%,var(--night-3),var(--night-2));border:1px solid var(--rule);overflow:hidden}
+.plaque .yr{font-size:clamp(5rem,2rem + 10vw,11rem);font-weight:200;letter-spacing:-.07em;line-height:.8;}
+.plaque h2{font-size:clamp(2rem,1.4rem + 2vw,3.2rem);margin-top:22px}
+.plaque p{color:var(--text-2);margin-top:16px;max-width:40ch}
+.plaque svg.bg{position:absolute;right:-40px;bottom:-60px;width:260px;height:auto;opacity:.08}
+.ledger li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:20px;padding:22px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.ledger li:first-child{border-top:1px solid var(--rule)}
+.ledger .k{font-size:2rem;font-weight:300;letter-spacing:-.05em;line-height:1;}
+.ledger b{display:block;font-weight:600}
+.ledger span{display:block;color:var(--text-2);font-size:.9rem}
+@media (max-width:900px){.awards{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- voices ---------- */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.voice{display:flex;flex-direction:column;gap:24px;padding-top:24px;border-top:2px solid var(--text)}
+.voice:nth-child(1){border-top-color:#ff5560}.voice:nth-child(2){border-top-color:var(--text)}.voice:nth-child(3){border-top-color:#8aa6ff}
+.voice blockquote{font-size:clamp(1.35rem,1.15rem + .8vw,1.85rem);font-weight:400;letter-spacing:-.02em;line-height:1.22;}
+.voice figcaption{color:var(--text-2);font-size:.88rem}
+@media (max-width:900px){.voices{grid-template-columns:minmax(0,1fr);gap:40px}}
+
+/* ---------- visit / door sign ---------- */
+.visit{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:start}
+.addr{font-style:normal;font-size:clamp(2.4rem,1.4rem + 4vw,5.6rem);font-weight:300;letter-spacing:-.055em;line-height:.92;margin-top:24px}
+.addr strong{font-weight:700}
+.visit-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.sign{position:relative;border-radius:18px;background:var(--paper);color:var(--ink);padding:28px}
+.sign::before{content:"";position:absolute;left:50%;top:-34px;width:60px;height:34px;transform:translateX(-50%);border:1px solid rgba(238,240,247,.4);border-bottom:0;border-radius:30px 30px 0 0}
+.sign-state{display:flex;align-items:center;gap:12px;font-size:clamp(2.2rem,1.6rem + 2vw,3.2rem);font-weight:800;letter-spacing:-.04em;text-transform:uppercase;line-height:1}
+.sign-state i{width:14px;height:14px;border-radius:50%;flex:none}
+.sign-state.open{color:var(--blue)}.sign-state.open i{background:var(--blue)}
+.sign-state.closed{color:var(--red)}.sign-state.closed i{background:var(--red)}
+.sign-next{color:var(--ink-2);margin-top:10px;font-size:.95rem}
+.hours{width:100%;border-collapse:collapse;margin-top:22px;font-size:.95rem}
+.hours td{padding:10px 0;border-top:1px dashed var(--rule-day)}
+.hours td:last-child{text-align:right}
+.hours tr.today td{font-weight:700}
+.tel{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:22px;padding-top:18px;border-top:1.5px solid var(--ink)}
+.tel strong{font-size:1.25rem;font-weight:700;letter-spacing:-.01em}
+.tel small{display:block;color:var(--ink-3);font-size:.78rem;font-weight:400}
+.copy{border:1px solid var(--rule-day);background:transparent;font:600 .8rem/1 var(--f);color:var(--ink);min-height:36px;padding:0 14px;border-radius:999px;cursor:pointer}
+.copy:hover{border-color:var(--ink)}
+@media (max-width:900px){.visit{grid-template-columns:minmax(0,1fr)}.sign{margin-top:24px}}
+
+/* ---------- footer ---------- */
+.foot{border-top:1px solid var(--rule);padding-block:48px calc(40px + env(safe-area-inset-bottom,0px))}
+.foot-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding-bottom:28px;border-bottom:1px solid var(--rule)}
+.soc{display:flex;flex-wrap:wrap;gap:8px}
+.soc a{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:1px solid var(--rule);border-radius:999px;text-decoration:none;font-size:.88rem;font-weight:500;transition:border-color .2s}
+.soc a:hover{border-color:var(--text)}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;color:var(--text-2);font-size:.82rem;line-height:1.75}
+.legal a{color:var(--text)}
+
+/* ===== motion layer ===== */
+.hero h1{max-width:none}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .w{display:inline-block}
+.hero h1 .mega{font-size:clamp(3.6rem,1rem + 10.5vw,11.5rem);font-weight:800;letter-spacing:-.06em;line-height:.86}
+.hero-photo{overflow:hidden}
+.hero-photo img{transform-origin:60% 40%;will-change:transform}
+.hero-in{will-change:transform,opacity}
+.progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,var(--red),var(--blue));transform-origin:0 50%;transform:scaleX(var(--p,0))}
+.marquee{background:var(--night);border-block:1px solid var(--rule);overflow:hidden}
+.mq-track{display:flex;width:max-content;padding-block:22px}
+.mq-track span{display:inline-flex;align-items:center;gap:40px;padding-right:40px;font-size:clamp(1.1rem,1rem + .6vw,1.6rem);font-weight:300;letter-spacing:-.02em;color:var(--text);white-space:nowrap}
+.mq-track span::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--red)}
+.mq-track span:nth-child(even)::after{background:var(--blue)}
+.svc li{position:relative;transition:padding .45s cubic-bezier(.2,.7,.2,1)}
+.svc li::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:100%;background:linear-gradient(90deg,var(--red),var(--blue));transform:scaleX(0);transform-origin:0 50%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.svc li:hover::before{transform:scaleX(1)}
+.team-photo img{transform:scale(1.14);will-change:transform}
+.plaque .yr{display:inline-block;will-change:transform}
+.box{transform-origin:50% -40px}
+.box:hover{transform:rotate(-1.2deg) translateY(-4px)}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1 .w{animation:lineUp 1s cubic-bezier(.2,.75,.15,1) both;animation-delay:var(--d,0s)}
+  @keyframes lineUp{from{transform:translateY(105%)}to{transform:none}}
+  .in-up{animation:inUp .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+  @keyframes inUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .hero-photo img{animation:photoIn 1.8s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes photoIn{from{opacity:.2;scale:1.12}to{opacity:1;scale:1}}
+  .mq-track{animation:mq 46s linear infinite}
+  .marquee:hover .mq-track{animation-play-state:paused}
+  @keyframes mq{to{transform:translateX(-50%)}}
+  .rv{transition:opacity .9s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform .9s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+  .rv.pre{opacity:0;transform:translateY(36px)}
+  .team-photo.rv.pre{transform:translateY(60px) scale(.96)}
+  .box{animation:hang 1.1s cubic-bezier(.3,.7,.3,1) both;animation-delay:calc(var(--i,0) * 90ms)}
+  @keyframes hang{0%{opacity:0;transform:translateY(-56px) rotate(-4deg)}55%{opacity:1;transform:translateY(6px) rotate(1.6deg)}75%{transform:translateY(-2px) rotate(-.7deg)}100%{transform:none}}
+  .box.done{animation:none}
+  .plan .walls,.plan .outer,.plan .door{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.4s ease forwards;animation-delay:calc(var(--i,0) * 90ms + .5s)}
+  .plan .outer{animation-duration:1s;animation-delay:calc(var(--i,0) * 90ms + .3s)}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .plan .liv{animation:fillIn .8s ease both;animation-delay:calc(var(--i,0) * 90ms + 1.2s)}
+  @keyframes fillIn{from{opacity:0}}
+  
+  .svc li:hover
+  
+}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="wm" viewBox="0 0 1415.15 199.8"><path d="M1036.52,92.45c-4.05,7.91-9.52,14.54-16.42,19.87-6.9,5.34-14.950,9.34-24.15,12-9.2,2.670-18.95,4-29.25,4h-46.92v68.16h-21.8V3.31h72.3c10.85,0,20.74,1.43,29.67,4.28,8.92,2.85,16.56,6.9,22.91,12.14,6.350,5.24,11.22,11.69,14.63,19.32,3.4,7.64,5.11,16.24,5.11,25.8,0,10.49-2.03,19.69-6.07,27.6ZM1006.54,34.08c-9.5-7.08-22.09-10.62-37.77-10.62h-48.98v85h47.87c7.93,0,15.17-1.01,21.72-3.04,6.55-2.02,12.17-4.92,16.88-8.69,4.71-3.77,8.3-8.28,10.79-13.52,2.49-5.24,3.74-11.08,3.74-17.52,0-13.98-4.75-24.51-14.25-31.6Z"/><path d="M1187.75,196.49l-56.020-75.06h-55.19v75.06h-21.8V3.31h83.07c10.67,0,20.28,1.38,28.84,4.14,8.56,2.76,15.87,6.67,21.94,11.73s10.76,11.14,14.07,18.22c3.31,7.09,4.97,14.96,4.97,23.61,0,8.1-1.29,15.33-3.86,21.67-2.58,6.35-6.21,11.88-10.9,16.57-4.69,4.7-10.26,8.61-16.7,11.74-6.44,3.13-13.43,5.34-20.97,6.62l59.33,78.87h-26.77ZM1172.82,33.56c-8.67-6.74-20.84-10.11-36.52-10.11h-59.76v78.65h59.48c7.19,0,13.83-.92,19.92-2.77s11.34-4.48,15.77-7.89c4.42-3.42,7.88-7.620,10.38-12.6,2.49-4.99,3.73-10.62,3.73-16.89,0-12.19-4.34-21.65-13-28.39Z"/><path d="M1407.97,137.85c-4.79,12.05-11.5,22.68-20.15,31.88-8.65,9.2-19.04,16.51-31.18,21.94-12.14,5.42-25.57,8.14-40.29,8.14s-28.11-2.67-40.15-8c-12.05-5.33-22.4-12.56-31.05-21.66-8.65-9.11-15.32-19.68-20.01-31.74-4.69-12.05-7.04-24.79-7.04-38.22s2.39-26.17,7.18-38.22c4.78-12.05,11.5-22.67,20.15-31.87,8.65-9.2,19.04-16.51,31.18-21.94,12.14-5.42,25.57-8.14,40.29-8.14s28.1,2.67,40.15,8c12.05,5.34,22.4,12.56,31.05,21.66,8.65,9.11,15.32,19.69,20.01,31.74,4.69,12.05,7.04,24.79,7.04,38.22s-2.39,26.17-7.17,38.22ZM1386.86,68.99c-3.77-9.75-9.06-18.21-15.87-25.39-6.81-7.18-14.86-12.88-24.15-17.11-9.29-4.23-19.46-6.35-30.49-6.35s-21.21,2.07-30.5,6.21c-9.29,4.14-17.25,9.8-23.87,16.97-6.62,7.18-11.82,15.59-15.59,25.25-3.77,9.66-5.66,20.01-5.66,31.05s1.88,21.43,5.66,31.18c3.77,9.75,9.06,18.21,15.87,25.39,6.8,7.17,14.85,12.88,24.15,17.11,9.29,4.23,19.46,6.35,30.49,6.35s21.2-2.07,30.49-6.21c9.29-4.14,17.25-9.8,23.87-16.97,6.62-7.17,11.82-15.59,15.59-25.25,3.77-9.66,5.66-20.01,5.66-31.05s-1.89-21.43-5.66-31.18Z"/><path d="M785.43,96L843.64,1.4h-55.76l-33.1,59.62L721.43,1.4h-58.24l58.24,92.69-39.64,64.37L628.33,1.4h-63.14l-56.62,165.72V1.4h-59.87l-43.48,132.05L361.75,1.4h-21.15l-39.27,75.45v119.77h46.75v-115.39l37.48,115.39h37.45l37.71-115.91v115.91h89.45l11.76-37.44h67.81l11.72,37.44h0s0,0,0,0h72.85l38.01-68.36,40.47,68.36h58.51l-65.86-100.630ZM573.95,117.61l21.86-73.02,21.86,73.02h-43.73Z"/><path d="M301.33,42.41V1.4h-134.81v195.23h72.47l21.35-41.02h-42.4v-37.45h61.890l21.5-41.31h-83.39v-34.44h83.39Z"/><path d="M99.41,83.98c-4.48,4.19-12.35,6.28-23.67,6.28h-26.5v-49.51h25.69c11.47,0,19.55,2.02,24.18,6.03,4.67,4.01,6.98,10.11,6.98,18.3s-2.24,14.7-6.69,18.89ZM125.8,118.41c20.03-11.47,30.06-29.99,30.06-55.5,0-18.96-6.17-33.96-18.45-44.98C125.1,6.91,105.44,1.4,78.5,1.4H0v195.23h49.25v-67.55h30.32l32.82,67.55h54.14l-40.72-78.21Z"/></symbol>
+<symbol id="balloon" viewBox="0 0 94.82 107.29">
+    <path fill="#fff" d="M47.32 106.59c-1.79 0-3.34-1.08-4.62-2.14-8.38-7.2-23.22-20.28-29.05-27.38-5.04-6.13-9.38-11.79-11.54-18.99C.86 54 .22 49.72.22 45.37c0-5.71 1.09-11.27 3.23-16.53C10.56 11.32 27.78 0 47.32 0c19.53 0 36.75 11.32 43.87 28.84 2.14 5.28 3.23 10.84 3.23 16.53 0 4.33-.64 8.61-1.88 12.72-2.17 7.17-6.51 12.84-11.55 18.98-5.83 7.11-20.66 20.17-28.98 27.33-1.36 1.11-2.91 2.19-4.69 2.19"/>
+    <path fill="#f5f3e7" d="M88.79 29.85H5.51a40.6 40.6 0 0 0-3.05 15.61c0 4.16.61 8.19 1.77 12h85.82c1.17-3.81 1.78-7.84 1.78-12 0-5.5-1.08-10.77-3.04-15.61"/>
+    <path fill="#641012" d="M47.14 2.52c-18.95 0-35.14 11.33-41.63 27.33h83.28C82.29 13.85 66.09 2.52 47.14 2.52"/>
+    <path fill="#141c35" d="M4.23 57.46c2.1 6.95 6.59 12.63 11.16 18.19 6.08 7.42 22.63 21.85 29.1 27.41.88.72 1.89 1.44 2.66 1.44.76 0 1.77-.72 2.65-1.44 6.47-5.56 23.02-19.99 29.1-27.41 4.57-5.56 9.06-11.24 11.16-18.19H4.23"/>
+    <path fill="#ed1c24" d="M88.79 29.85H47.14V9.99c0-4.24 3.81-7.51 7.98-6.79 15.42 2.67 28.1 12.95 33.67 26.65"/>
+    <path fill="#3555ae" d="M90.06 57.46c-2.1 6.95-6.59 12.63-11.16 18.19-6.08 7.42-22.63 21.85-29.1 27.41-.88.72-1.89 1.44-2.65 1.44V64.6c0-3.95 3.2-7.14 7.14-7.14h35.77"/>
+  </symbol>
+<symbol id="balloon-line" viewBox="0 0 521.51 593.6">
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0.0999061,0,0,-0.0999061,0,593.121582)">
+      <path d="M3062.88 5895.46C2823.39 5930.81 2607.53 5742.39 2607.53 5499.35V4344.24H180.17C558.92 5274.57 1502.54 5933.5 2607.6 5933.5c155.34 0 307.44-13.02 455.28-38.04Z"/>
+      <path d="M5035 4344.24H2607.53V5499.35c0-242.96 215.87-431.38 455.35-396.03.43-.08.78-.16 1.21-.16C3967 5742.31 4709.62 5143.43 5035 4344.24Z"/>
+      <path d="M3023.62 2738.71c-229.83 0-416.06-185.8-416.06-415.35V2.51c-44.53 0-103.65 41.76-154.44 83.59l-.27.35C2075.23 410.08 1110.5 1249.19 755.9 1680.45 489.8 2003.96 228.14 2334.38 105.96 2738.71Z"/>
+      <path d="M5109.17 2738.71c-122.5-404.33-384.19-734.75-650.34-1058.26C4104.24 1249.19 3139.63 410.08 2762.24 86.45l-.35-.35C2710.94 44.27 2651.79 2.51 2607.56 2.51V2323.36c0 229.55 186.23 415.35 416.06 415.35Z"/>
+      <path d="M5035 4344.24H180.17C65.61 4063.12 2.5 3756.7 2.5 3436.63c0-242.18 35.82-476.54 103.46-697.92H5109.17c67.68 221.38 103.46 455.74 103.46 697.92 0 320.07-63.11 626.49-177.63 907.61Z"/>
+    </g>
+  </symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="arr-ne" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="nav">
+  <span class="progress" id="progress" aria-hidden="true"></span>
+  <nav class="wrap nav-in" aria-label="Principal">
+    <a class="logo" href="#topo" aria-label="RE/MAX PRO, início">
+      <svg class="bl" viewBox="0 0 94.82 107.29" aria-hidden="true"><use href="#balloon"/></svg>
+      <svg class="wm" viewBox="0 0 1415.15 199.8" aria-hidden="true"><use href="#wm"/></svg>
+    </a>
+    <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    <div class="menu" id="menu" data-open="false">
+      <a href="#montra">Montra</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#equipa">Equipa</a>
+      <a href="#premios">Prémios</a>
+      <a href="#visita">Visite-nos</a>
+    </div>
+    <a class="status-pill" id="nav-status" href="#visita"><i></i><span>Horário</span></a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="topo" aria-labelledby="h1">
+  <figure class="hero-photo"><img data-par="hero" src="assets/fachada.jpg" alt="Fachada da agência RE/MAX PRO à noite na Rua Júlio Dinis, com o letreiro iluminado e a montra de imóveis" width="1360" height="1020"></figure>
+  <div class="wrap hero-in" id="hero-in">
+    <p class="tag in-up">Rua Júlio Dinis, 849 · Porto</p>
+    <h1 id="h1"><span class="ln"><span class="w mega neon-r num">15 anos</span></span><span class="ln"><span class="w" style="--d:.12s">a abrir portas</span></span><span class="ln"><span class="w" style="--d:.22s">no Porto.</span></span></h1>
+    <p class="hero-lede in-up" style="--d:.4s">Desde 2011 em Cedofeita, com consultores especializados para comprar, vender, arrendar ou investir no Grande Porto e em Viana do Castelo.</p>
+    <div class="hero-cta in-up" style="--d:.5s">
+      <a class="btn btn-red" href="#montra">Ver a montra <svg aria-hidden="true"><use href="#arr"/></svg></a>
+      <a class="btn btn-line" href="#visita">Como chegar</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <dl class="tubes">
+      <div class="tube"><dt class="neon-b num">288</dt><dd>imóveis à venda</dd></div>
+      <div class="tube"><dt class="neon-r num">26</dt><dd>imóveis para arrendar</dd></div>
+      <div class="tube"><dt class="neon-b">#1</dt><dd>em volume de negócios no Porto</dd></div>
+      <div class="tube"><dt class="neon-r">Top 30</dt><dd>agências RE/MAX da Europa</dd></div>
+    </dl>
+  </div>
+</section>
+
+<div class="marquee" aria-label="Reconhecimentos"><div class="mq-track" aria-hidden="true"><span>Agência do Ano 2025</span><span>Hall of Fame 2025</span><span>#1 em volume de negócios no Porto</span><span>Top 30 RE/MAX Europa</span><span>Honors Program 2026</span><span>#2 acumulado no Grande Porto</span><span>Agência do Ano 2025</span><span>Hall of Fame 2025</span><span>#1 em volume de negócios no Porto</span><span>Top 30 RE/MAX Europa</span><span>Honors Program 2026</span><span>#2 acumulado no Grande Porto</span></div><p class="sr-only">Agência do Ano 2025, Hall of Fame 2025, número 1 em volume de negócios no Porto, Top 30 RE/MAX Europa, Honors Program 2026, número 2 acumulado no Grande Porto.</p></div>
+
+<section class="band window" id="montra" aria-labelledby="mo-h">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <h2 id="mo-h">O que está na montra.</h2>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Filtrar imóveis">
+        <button class="tab" type="button" role="tab" id="t-sale" aria-selected="true" aria-controls="boxes" data-k="sale">Venda<span class="n">4</span></button>
+        <button class="tab" type="button" role="tab" id="t-rent" aria-selected="false" aria-controls="boxes" data-k="rent">Arrendamento<span class="n">4</span></button>
+        <button class="tab" type="button" role="tab" id="t-done" aria-selected="false" aria-controls="boxes" data-k="done">Já saíram<span class="n">6</span></button>
+      </div>
+    </div>
+    <div class="boxes" id="boxes" role="tabpanel" aria-labelledby="t-sale"></div>
+    <div class="win-foot">
+      <a class="btn btn-red" id="all-buy" target="_blank" rel="noopener" href="#">Ver os 288 à venda <svg aria-hidden="true"><use href="#arr-ne"/></svg></a>
+      <a class="btn btn-line" id="all-rent" target="_blank" rel="noopener" href="#">Ver os 26 para arrendar</a>
+      <p>Cada cartaz abre o anúncio completo no remax.pt</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="servicos" aria-labelledby="sv-h">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <h2 id="sv-h">Cinco portas para o mesmo balcão.</h2>
+      </div>
+      <p>Cada cliente, imóvel e investimento exige conhecimento específico. Por isso trabalhamos por áreas.</p>
+    </div>
+    <ul class="svc">
+      <li class="rv" style="--d:0.0s"><h3>Residencial</h3><p>Compra, venda e arrendamento de apartamentos, moradias e terrenos.</p></li>
+      <li class="rv" style="--d:0.07s"><h3>Relocação</h3><p>Apoio a clientes estrangeiros que mudam de país e procuram casa no Norte.</p></li>
+      <li class="rv" style="--d:0.14s"><h3>Comercial</h3><p>Lojas, escritórios e outros espaços para atividades empresariais.</p></li>
+      <li class="rv" style="--d:0.21000000000000002s"><h3>Investimento</h3><p>Identificação e comercialização de oportunidades para investidores.</p></li>
+      <li class="rv" style="--d:0.28s"><h3>Empreendimentos</h3><p>Promoção de novos projetos, com estratégia de pricing e comercialização.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band day" id="equipa" aria-labelledby="eq-h">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <h2 id="eq-h">De dia, isto é a PRO.</h2>
+      </div>
+      <p>Consultores, mentores e departamentos de suporte, sob o mesmo balão.</p>
+    </div>
+    <figure class="team-photo rv">
+      <img data-par="team" src="assets/equipa.jpg" alt="Equipa da RE/MAX PRO reunida ao ar livre em frente a um painel com o logótipo da agência" width="1360" height="696">
+      <figcaption><svg viewBox="0 0 94.82 107.29" aria-hidden="true"><use href="#balloon"/></svg>Equipa RE/MAX PRO Porto</figcaption>
+    </figure>
+    <div class="team-grid">
+      <div>
+        <h3>Onde os profissionais vão <span>mais longe</span>.</h3>
+        <p class="lede">O desempenho de excelência não acontece por acaso. Constrói-se com conhecimento, método, acompanhamento e consistência.</p>
+        <a class="btn btn-ink" href="#visita">Quero juntar-me à equipa <svg aria-hidden="true"><use href="#arr"/></svg></a>
+      </div>
+      <ul class="pillars">
+        <li class="rv" style="--d:0.00s"><b>Pólo de Formação</b><span>Inicial, contínua e avançada, em vendas, negociação e negócio.</span></li>
+        <li class="rv" style="--d:0.08s"><b>Programa de Mentoria</b><span>Acompanhamento com base num perfil comportamental DISC avançado.</span></li>
+        <li class="rv" style="--d:0.00s"><b>Departamento Jurídico</b><span>Apoio jurídico e documental em cada processo.</span></li>
+        <li class="rv" style="--d:0.08s"><b>Departamento Financeiro</b><span>Suporte financeiro e administrativo aos consultores.</span></li>
+        <li class="rv" style="--d:0.00s"><b>Departamento de Marketing</b><span>Comunicação, materiais e posicionamento dos imóveis.</span></li>
+        <li class="rv" style="--d:0.08s"><b>Acompanhamento comercial</b><span>Orientação e ferramentas em todas as etapas do negócio.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="premios" aria-labelledby="aw-h">
+  <div class="wrap awards">
+    <div class="plaque rv">
+      <div class="yr neon-b num" data-par="yr" aria-hidden="true">2025</div>
+      <h2 id="aw-h">Agência do Ano.</h2>
+      <p>O melhor ano de sempre: a equipa mais produtiva e o maior Volume Médio de Transação (VMT) da nossa história.</p>
+    </div>
+    <ol class="ledger">
+      <li class="rv" style="--d:0.00s"><span class="k">#1</span><div><b>Volume de negócios no Porto</b><span>Reconhecimento contínuo pela liderança</span></div></li>
+      <li class="rv" style="--d:0.06s"><span class="k">#2</span><div><b>Acumulado no Grande Porto</b><span>Entre as agências da região</span></div></li>
+      <li class="rv" style="--d:0.12s"><span class="k">Top 30</span><div><b>Agências RE/MAX da Europa</b><span>Entre as de referência</span></div></li>
+      <li class="rv" style="--d:0.18s"><span class="k num">2025</span><div><b>Hall of Fame</b><span>RE/MAX Portugal</span></div></li>
+      <li class="rv" style="--d:0.24s"><span class="k num">2026</span><div><b>Honors Program</b><span>Integração no programa</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="vo-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <h2 id="vo-h">Clientes que voltam. Um até ficou.</h2>
+      </div>
+    </div>
+    <div class="voices">
+      <figure class="voice rv" style="--d:0.00s"><blockquote>“Da receção na agência até à assinatura do contrato, tudo correu muito bem.”</blockquote><figcaption>Cliente comprador</figcaption></figure>
+      <figure class="voice rv" style="--d:0.10s"><blockquote>“Conseguimos vender a nossa casa no Porto rapidamente e com um excelente retorno.”</blockquote><figcaption>Cliente vendedor</figcaption></figure>
+      <figure class="voice rv" style="--d:0.20s"><blockquote>“Fiquei tão impressionado que decidi tornar-me consultor na agência.”</blockquote><figcaption>Cliente, hoje consultor</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band window" id="visita" aria-labelledby="vi-h">
+  <div class="wrap visit">
+    <div>
+      <div class="head" style="margin-bottom:0">
+        <div>
+          <h2 id="vi-h" class="sr-only">Morada e horário</h2>
+        </div>
+      </div>
+      <address class="addr rv">Rua Júlio Dinis, <strong class="neon-r">849</strong><br>4050-327 Porto</address>
+      <p style="color:var(--text-2);margin-top:20px;max-width:44ch">Cedofeita, Santo Ildefonso, Sé, Miragaia, São Nicolau e Vitória. Atuamos em todo o Grande Porto e no distrito de Viana do Castelo.</p>
+      <div class="visit-actions">
+        <a class="btn btn-red" href="https://www.google.com/maps/search/?api=1&amp;query=41.156185,-8.627891" target="_blank" rel="noopener">Abrir no mapa <svg aria-hidden="true"><use href="#arr-ne"/></svg></a>
+        <a class="btn btn-line" href="https://remax.pt/pt/procuro-imovel" target="_blank" rel="noopener">Serviço gratuito para compradores</a>
+      </div>
+    </div>
+    <aside class="sign rv" style="--d:.12s" aria-labelledby="sign-state">
+      <p class="sign-state" id="sign-state"><i></i><span>Horário</span></p>
+      <p class="sign-next" id="sign-next">Segunda a sexta e sábado de manhã.</p>
+      <table class="hours"><tbody>
+        <tr data-d="1-5"><td>Segunda a sexta</td><td class="num">09h30 – 19h00</td></tr>
+        <tr data-d="6"><td>Sábado</td><td class="num">10h00 – 13h00</td></tr>
+        <tr data-d="0"><td>Domingo</td><td>Fechado</td></tr>
+      </tbody></table>
+      <div class="tel">
+        <div><strong class="num" id="phone">+351 226 091 571</strong><small>Chamada para a rede fixa nacional</small></div>
+        <button class="copy" type="button" id="copy">Copiar</button>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="logo" href="#topo" aria-label="RE/MAX PRO, voltar ao início">
+        <svg class="bl" viewBox="0 0 94.82 107.29" aria-hidden="true"><use href="#balloon"/></svg>
+        <svg class="wm" viewBox="0 0 1415.15 199.8" aria-hidden="true"><use href="#wm"/></svg>
+      </a>
+      <div class="soc">
+        <a href="https://www.instagram.com/remaxpro.porto" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/people/REMAX-PRO-Porto/61565906993549/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/company/remaxproporto/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.youtube.com/channel/UC0l_7DV4OhqwNh34es5Y-nw" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+    <div class="legal">
+      <p>Successagain – Sociedade de Mediação Imobiliária, Unipessoal Lda. · AMI 9276<br>Todas as agências são de gestão autónoma e independente.</p>
+      <p><a href="https://livroreclamacoes.pt" target="_blank" rel="noopener">Livro de Reclamações Eletrónico</a><br>Conceito de design · proposta não oficial</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var R="https://remax.pt/pt/imoveis/";
+  function q(nm){return "https://remax.pt/pt/"+nm+"/imoveis/h/r/r/r/t?s="+encodeURIComponent(JSON.stringify({of:"12357",nm:"RE/MAX Pro",os:"false",mio:"false"}))+"&p=1&o=-PublishDate"}
+  document.getElementById("all-buy").href=q("comprar");
+  document.getElementById("all-rent").href=q("arrendar");
+
+  var CED="Cedofeita, Santo Ildefonso, Sé, Miragaia, São Nicolau e Vitória, Porto";
+  var D={
+    sale:[
+      {t:"T3",w:"Apartamento",b:3,ba:3,a:169,p:"749 000 €",l:CED,id:"123571200-245",x:"Visita virtual",u:"venda-apartamento-t3-porto-cedofeita-santo-ildefonso-se-miragaia-sao-nicolau-e-vitoria/123571200-245"},
+      {t:"T3",w:"Apartamento",b:3,ba:2,a:103,p:"358 000 €",l:"Bonfim, Porto",id:"123571263-87",u:"venda-apartamento-t3-porto-bonfim/123571263-87"},
+      {t:"T3",w:"Apartamento",b:3,ba:2,a:129,p:"215 000 €",l:"Sé, Santa Maria e Meixedo, Bragança",id:"123571313-73",u:"venda-apartamento-t3-braganca-se-santa-maria-e-meixedo/123571313-73"},
+      {t:"T3",w:"Apartamento",b:3,ba:2,a:90,p:"215 000 €",l:"Sé, Santa Maria e Meixedo, Bragança",id:"123571313-74",u:"venda-apartamento-t3-braganca-se-santa-maria-e-meixedo/123571313-74"}
+    ],
+    rent:[
+      {r:1,t:"T2",w:"Apartamento",b:2,ba:2,a:79,p:"1 600 €",m:1,l:CED,id:"123571028-823",u:"arrendamento-apartamento-t2-porto-cedofeita-santo-ildefonso-se-miragaia-sao-nicolau-e-vitoria/123571028-823"},
+      {r:1,t:"T2",w:"Apartamento",b:2,ba:2,a:76,p:"1 450 €",m:1,l:CED,id:"123571028-824",u:"arrendamento-apartamento-t2-porto-cedofeita-santo-ildefonso-se-miragaia-sao-nicolau-e-vitoria/123571028-824"},
+      {r:1,t:"T1",w:"Apartamento",b:1,ba:1,a:60,p:"1 250 €",m:1,l:CED,id:"123571028-825",u:"arrendamento-apartamento-t1-porto-cedofeita-santo-ildefonso-se-miragaia-sao-nicolau-e-vitoria/123571028-825"},
+      {r:1,t:"T1",w:"Apartamento",b:1,ba:1,a:46,p:"1 100 €",m:1,l:CED,id:"123571028-826",u:"arrendamento-apartamento-t1-porto-cedofeita-santo-ildefonso-se-miragaia-sao-nicolau-e-vitoria/123571028-826"}
+    ],
+    done:[
+      {t:"T5",w:"Moradia",b:5,ba:1,a:177,p:"199 000 €",o:"250 000 €",s:"Vendido",l:"Gondomar (São Cosme), Valbom e Jovim",id:"123571046-1052",u:"venda-moradia-t5-gondomar-gondomar-sao-cosme-valbom-e-jovim/123571046-1052"},
+      {t:"T5",w:"Moradia",b:5,ba:2,a:168,p:"395 000 €",s:"Vendido",l:"Gondomar (São Cosme), Valbom e Jovim",id:"123571046-1061",u:"venda-moradia-t5-gondomar-gondomar-sao-cosme-valbom-e-jovim/123571046-1061"},
+      {t:"T3",w:"Apartamento",b:3,ba:2,a:135,p:"385 000 €",s:"Vendido",l:"Campanhã, Porto",id:"123571316-33",u:"venda-apartamento-t3-porto-campanha/123571316-33"},
+      {t:"T2",w:"Apartamento",b:2,ba:2,a:92,p:"270 000 €",s:"Vendido",l:"Pedroso e Seixezelo, Vila Nova de Gaia",id:"123571060-577",u:"venda-apartamento-t2-vila-nova-de-gaia-pedroso-e-seixezelo/123571060-577"},
+      {r:1,t:"T2",w:"Apartamento",b:2,ba:2,a:90,p:"1 750 €",m:1,s:"Arrendado",l:"Matosinhos e Leça da Palmeira",id:"123571250-30",u:"arrendamento-apartamento-t2-matosinhos-matosinhos-e-leca-da-palmeira/123571250-30"},
+      {r:1,t:"T3",w:"Moradia",b:3,ba:3,a:136,p:"1 500 €",m:1,s:"Arrendado",l:"Valongo",id:"123571254-38",u:"arrendamento-moradia-t3-valongo-valongo/123571254-38"}
+    ]
+  };
+
+  /* floor-plan line art generated from each listing's own rooms, area and ID */
+  function rng(seed){var h=0;for(var i=0;i<seed.length;i++){h=(h*31+seed.charCodeAt(i))|0}return function(){h=(h*1103515245+12345)|0;return ((h>>>16)&32767)/32767}}
+  function plan(x){
+    var W=200,H=Math.round(200*Math.max(.5,Math.min(.72,x.a/220))),r=rng(x.id),n=x.b+x.ba+1;
+    var rooms=[{x:0,y:0,w:W,h:H}],walls=[],doors=[];
+    while(rooms.length<n){
+      rooms.sort(function(p,q){return q.w*q.h-p.w*p.h});
+      var a=rooms.shift(),f=.38+r()*.24;
+      if(a.w>=a.h){var cx=a.x+a.w*f;walls.push([cx,a.y,cx,a.y+a.h]);doors.push([cx,a.y+a.h*(.2+r()*.5),0]);rooms.push({x:a.x,y:a.y,w:cx-a.x,h:a.h},{x:cx,y:a.y,w:a.x+a.w-cx,h:a.h})}
+      else{var cy=a.y+a.h*f;walls.push([a.x,cy,a.x+a.w,cy]);doors.push([a.x+a.w*(.2+r()*.5),cy,1]);rooms.push({x:a.x,y:a.y,w:a.w,h:cy-a.y},{x:a.x,y:cy,w:a.w,h:a.y+a.h-cy})}
+    }
+    rooms.sort(function(p,q){return q.w*q.h-p.w*p.h});
+    var L=rooms[0],s='<svg viewBox="-2 -2 '+(W+4)+' '+(H+4)+'" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">';
+    s+='<rect class="liv" x="'+L.x+'" y="'+L.y+'" width="'+L.w+'" height="'+L.h+'"/>';
+    walls.forEach(function(w){s+='<line pathLength="1" class="walls" x1="'+w[0].toFixed(1)+'" y1="'+w[1].toFixed(1)+'" x2="'+w[2].toFixed(1)+'" y2="'+w[3].toFixed(1)+'"/>'});
+    doors.forEach(function(d){var k=11;s+='<path pathLength="1" class="door" d="M'+d[0].toFixed(1)+' '+d[1].toFixed(1)+' a'+k+' '+k+' 0 0 1 '+k+' '+(d[2]?k:-k)+'"/>'});
+    return s+'<rect pathLength="1" class="outer" x="0" y="0" width="'+W+'" height="'+H+'"/></svg>';
+  }
+  function nb(s){return s.replace(/ /g," ")}
+  function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+  function box(x){
+    return '<a class="box'+(x.r?" rent":"")+'" href="'+R+x.u+'" target="_blank" rel="noopener" aria-label="'+esc(x.w+" "+x.t+", "+x.l+", "+x.a+" m², "+x.p+(x.m?" por mês":"")+(x.s?", "+x.s:""))+'"><span class="box-in">'+
+      '<span class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i></span>'+
+      '<span class="box-top"><span class="tag k">'+(x.r?"Arrendamento":"Venda")+'</span><span class="tag">'+(x.x||x.w)+'</span></span>'+
+      '<span class="plan"><b>'+x.t+'</b>'+plan(x)+'</span>'+
+      '<span class="box-b"><span class="price num">'+(x.o?'<s>'+nb(x.o)+'</s>':'')+'<span>'+nb(x.p)+'</span>'+(x.m?'<small>/mês</small>':'')+'</span>'+
+      '<span class="where">'+esc(x.l)+'</span>'+
+      '<span class="meta num"><span>'+x.a+' m²</span><span>'+x.b+' quarto'+(x.b>1?"s":"")+'</span><span>'+x.ba+' WC</span><span>ID '+x.id+'</span></span></span>'+
+      (x.s?'<span class="ribbon'+(x.s==="Arrendado"?" let":"")+'" aria-hidden="true">'+x.s+'</span>':'')+
+      '</span></a>';
+  }
+  var el=document.getElementById("boxes");
+  function show(k){el.innerHTML=D[k].map(box).join("");[].forEach.call(el.children,function(c,i){c.style.setProperty('--i',i);c.addEventListener('animationend',function(e){if(e.animationName==='hang')c.classList.add('done')})})}
+  show("sale");
+  var tabs=[].slice.call(document.querySelectorAll(".tab"));
+  function pick(b){tabs.forEach(function(t){t.setAttribute("aria-selected",t===b);t.tabIndex=t===b?0:-1});el.setAttribute("aria-labelledby",b.id);show(b.dataset.k)}
+  tabs.forEach(function(b,i){
+    b.tabIndex=i===0?0:-1;
+    b.addEventListener("click",function(){pick(b)});
+    b.addEventListener("keydown",function(e){var n=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(!n)return;var t=tabs[(i+n+tabs.length)%tabs.length];t.focus();pick(t)});
+  });
+
+  /* live door sign, computed in Lisbon time */
+  function lisbon(){
+    var parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Lisbon",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+    var o={};parts.forEach(function(p){o[p.type]=p.value});
+    var d={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday];
+    return {d:d,m:(+o.hour%24)*60+(+o.minute)};
+  }
+  var H={1:[570,1140],2:[570,1140],3:[570,1140],4:[570,1140],5:[570,1140],6:[600,780]};
+  var NAMES=["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
+  function hm(m){return String(Math.floor(m/60)).padStart(2,"0")+"h"+String(m%60).padStart(2,"0")}
+  function door(){
+    var t=lisbon(),h=H[t.d],open=!!h&&t.m>=h[0]&&t.m<h[1],next="";
+    if(open){next="Fecha hoje às "+hm(h[1])+"."}
+    else{
+      if(h&&t.m<h[0]){next="Abre hoje às "+hm(h[0])+"."}
+      else{for(var i=1;i<=7;i++){var d=(t.d+i)%7;if(H[d]){next="Abre "+(i===1?"amanhã":NAMES[d])+" às "+hm(H[d][0])+".";break}}}
+    }
+    var st=document.getElementById("sign-state");
+    st.className="sign-state "+(open?"open":"closed");
+    st.querySelector("span").textContent=open?"Aberto":"Fechado";
+    document.getElementById("sign-next").textContent=next;
+    var np=document.getElementById("nav-status");
+    np.className="status-pill "+(open?"open":"closed");
+    np.querySelector("span").textContent=open?"Aberto agora":"Fechado · "+next.replace(/\.$/,"").replace("Abre ","abre ");
+    [].forEach.call(document.querySelectorAll(".hours tr"),function(tr){
+      var k=tr.dataset.d,today=k==="1-5"?(t.d>=1&&t.d<=5):(+k===t.d);
+      tr.classList.toggle("today",today);
+    });
+  }
+  door(); setInterval(door,60000);
+
+  var bu=document.getElementById("burger"),me=document.getElementById("menu");
+  function set(o){bu.setAttribute("aria-expanded",o);bu.setAttribute("aria-label",o?"Fechar menu":"Abrir menu");me.dataset.open=o}
+  bu.addEventListener("click",function(){set(bu.getAttribute("aria-expanded")!=="true")});
+  me.addEventListener("click",function(e){if(e.target.closest("a"))set(false)});
+
+  var cp=document.getElementById("copy"),ph=document.getElementById("phone");
+  cp.addEventListener("click",function(){
+    function ok(){cp.textContent="Copiado";setTimeout(function(){cp.textContent="Copiar"},1800)}
+    function sel(){var g=document.createRange();g.selectNodeContents(ph);var s=getSelection();s.removeAllRanges();s.addRange(g)}
+    try{navigator.clipboard.writeText(ph.textContent).then(ok,sel)}catch(e){sel()}
+  });
+  /* motion: reveals + parallax (skipped entirely with reduced motion) */
+  var still=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var prog=document.getElementById("progress");
+  if(!still&&"IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove("pre");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});
+    [].forEach.call(document.querySelectorAll(".rv"),function(n){if(n.getBoundingClientRect().top>window.innerHeight*.92){n.classList.add("pre");io.observe(n)}});
+  }
+  var heroImg=document.querySelector('[data-par="hero"]'),heroIn=document.getElementById("hero-in"),hero=document.querySelector(".hero");
+  var teamImg=document.querySelector('[data-par="team"]'),yr=document.querySelector('[data-par="yr"]');
+  var ticking=false;
+  function frame(){
+    ticking=false;
+    var y=window.scrollY,vh=window.innerHeight,docH=document.documentElement.scrollHeight-vh;
+    prog.style.setProperty("--p",docH>0?(y/docH).toFixed(4):0);
+    if(still)return;
+    var hh=hero.offsetHeight;
+    if(y<hh+100){
+      heroImg.style.transform="translate3d(0,"+(y*.35).toFixed(1)+"px,0) scale("+(1+y/hh*.08).toFixed(4)+")";
+      heroIn.style.transform="translate3d(0,"+(y*-.12).toFixed(1)+"px,0)";
+      heroIn.style.opacity=Math.max(0,1-y/(hh*.85)).toFixed(3);
+    }
+    [[teamImg,9],[yr,-14]].forEach(function(pair){
+      var n=pair[0];if(!n)return;var r=(n.parentElement||n).getBoundingClientRect();
+      if(r.bottom<-100||r.top>vh+100)return;
+      var t=((r.top+r.height/2)-vh/2)/vh;
+      n.style.transform=(n===teamImg?"scale(1.14) ":"")+"translate3d(0,"+(t*pair[1]).toFixed(2)+"%,0)";
+    });
+  }
+  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(frame)}}
+  window.addEventListener("scroll",onScroll,{passive:true});
+  window.addEventListener("resize",onScroll);
+  frame();
+})();
+</script>
+</body>
+</html>
